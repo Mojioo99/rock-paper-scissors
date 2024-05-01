@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ROCK PAPER SCISSORS</h1>
+            <div class="score">
+                <h3>SCORE</h3>
+                <h1>0</h1>
+            </div>
+        </div>
+
+        <div class="cards-container">
+            <div class="card rock">
+                <!-- <img src="./images/icon-rock.svg" alt=""> -->
+            </div>
+            <div class="card paper">
+                <!-- <img src="./images/icon-paper.svg" alt=""> -->
+            </div>
+            <div  class="card scissors">
+                <!-- <img src="./images/icon-scissors.svg" alt=""> -->
+            </div>
+        </div>
+        
+        
+        <div class="game-container hidden">
+            <div class="col">
+                <h2>YOU PICKED</h2>
+                <div class="pick pick1"></div>
+            </div>
+            <div class="col hidden ">
+                <h2>YOU WIN</h2>
+                <button>PLAY AGAIN</button>
+            </div>
+            <div class="col">
+                <h2>HOUSE PICKED</h2>
+                <div class="empty"></div>
+                <div class="pick pick2 hidden">
+                    
+                </div>
+            </div>
+        </div>
+        <button class="rules">RULES</button>
+    </div>
+    <div class="modal hidden">
+        <div class="box">
+            <h2>RULES</h2>
+            <div class="close">&times;</div>
+            <img src="./images/image-rules.svg" alt="">
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
