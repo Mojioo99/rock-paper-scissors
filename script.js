@@ -17,6 +17,8 @@ function buttonSelect() {
   rockBtn = document.querySelector(".rock");
   paperBtn = document.querySelector(".paper");
   scissorsBtn = document.querySelector(".scissors");
+  lizardBtn = document.querySelector(".lizard");
+  spockBtn = document.querySelector(".spock");
   rockBtn.onclick = function () {
     actions(this);
   };
@@ -26,15 +28,25 @@ function buttonSelect() {
   scissorsBtn.onclick = function () {
     actions(this);
   };
+  lizardBtn.onclick = function () {
+    actions(this);
+  };
+  spockBtn.onclick = function () {
+    actions(this);
+  };
 }
 
 let rockBtn = document.querySelector(".rock");
 let paperBtn = document.querySelector(".paper");
 let scissorsBtn = document.querySelector(".scissors");
+let lizardBtn = document.querySelector(".lizard");
+let spockBtn = document.querySelector(".spock");
 let rockBtn2 = document.querySelector(".rock");
 let paperBtn2 = document.querySelector(".paper");
 let scissorsBtn2 = document.querySelector(".scissors");
-let buttons = [rockBtn2, paperBtn2, scissorsBtn2];
+let lizardBtn2 = document.querySelector(".lizard");
+let spockBtn2 = document.querySelector(".spock");
+let buttons = [rockBtn2, paperBtn2, scissorsBtn2, lizardBtn2, spockBtn2];
 let cardsContainer = document.querySelector(".cards-container");
 let gameContainer = document.querySelector(".game-container");
 let empty = document.querySelector(".empty");
@@ -54,6 +66,12 @@ paperBtn.onclick = function () {
 scissorsBtn.onclick = function () {
   actions(this);
 };
+lizardBtn.onclick = function () {
+  actions(this);
+};
+spockBtn.onclick = function () {
+  actions(this);
+};
 function actions(el) {
   cardsContainer.classList.toggle("hidden");
   gameContainer.classList.toggle("hidden");
@@ -61,13 +79,12 @@ function actions(el) {
   setTimeout(() => {
     empty.classList.toggle("hidden");
     pick2.classList.toggle("hidden");
-    let housePick = buttons[Math.floor(Math.random() * 3)];
+    let housePick = buttons[Math.floor(Math.random() * buttons.length)];
 
     pick2.appendChild(housePick);
     pick1.children[0].style.boxShadow = "none";
     pick2.children[0].style.boxShadow = "none";
-    resultText.style.boxShadow='none'
-
+    resultText.style.boxShadow = "none";
   }, 500);
   setTimeout(() => {
     result.classList.toggle("hidden");
@@ -75,64 +92,144 @@ function actions(el) {
       pick1.children[0].classList.contains("rock") &&
       pick2.children[0].classList.contains("rock")
     ) {
-      resultText.innerHTML = "DRAW";
-      resultText.style.boxShadow='0 0 500px'
+      draw();
     } else if (
       pick1.children[0].classList.contains("rock") &&
       pick2.children[0].classList.contains("paper")
     ) {
-      resultText.innerHTML = "YOU LOSE";
-      pick2.children[0].style.boxShadow = "0 0 1000px lightblue";
+      lose();
     } else if (
       pick1.children[0].classList.contains("rock") &&
       pick2.children[0].classList.contains("scissors")
     ) {
-      resultText.innerHTML = "YOU WIN";
-      score++;
-      pick1.children[0].style.boxShadow = "0 0 1000px lightblue";
+      win();
+    } else if (
+      pick1.children[0].classList.contains("rock") &&
+      pick2.children[0].classList.contains("spock")
+    ) {
+      lose();
+    } else if (
+      pick1.children[0].classList.contains("rock") &&
+      pick2.children[0].classList.contains("lizard")
+    ) {
+      win();
     } else if (
       pick1.children[0].classList.contains("paper") &&
       pick2.children[0].classList.contains("paper")
     ) {
-      resultText.innerHTML = "DRAW";
-      resultText.style.boxShadow='0 0 500px'
+      draw();
     } else if (
       pick1.children[0].classList.contains("paper") &&
       pick2.children[0].classList.contains("scissors")
     ) {
-      resultText.innerHTML = "YOU LOSE";
-      pick2.children[0].style.boxShadow = "0 0 1000px lightblue";
+      lose();
     } else if (
       pick1.children[0].classList.contains("paper") &&
       pick2.children[0].classList.contains("rock")
     ) {
-      resultText.innerHTML = "YOU WIN";
-      score++;
-      pick1.children[0].style.boxShadow = "0 0 1000px lightblue";
+      win();
+    } else if (
+      pick1.children[0].classList.contains("paper") &&
+      pick2.children[0].classList.contains("spock")
+    ) {
+      win();
+    } else if (
+      pick1.children[0].classList.contains("papaer") &&
+      pick2.children[0].classList.contains("lizard")
+    ) {
+      lose();
     } else if (
       pick1.children[0].classList.contains("scissors") &&
       pick2.children[0].classList.contains("scissors")
     ) {
-      resultText.innerHTML = "DRAW";
-      resultText.style.boxShadow='0 0 500px'
+      draw();
     } else if (
       pick1.children[0].classList.contains("scissors") &&
       pick2.children[0].classList.contains("rock")
     ) {
-      resultText.innerHTML = "YOU LOSE";
-      pick2.children[0].style.boxShadow = "0 0 1000px lightblue";
+      lose();
     } else if (
       pick1.children[0].classList.contains("scissors") &&
       pick2.children[0].classList.contains("paper")
     ) {
-      resultText.innerHTML = "YOU WIN";
-      score++;
-      pick1.children[0].style.boxShadow = "0 0 1000px lightblue";
+      win();
+    } else if (
+      pick1.children[0].classList.contains("scissors") &&
+      pick2.children[0].classList.contains("spock")
+    ) {
+      lose();
+    } else if (
+      pick1.children[0].classList.contains("scissors") &&
+      pick2.children[0].classList.contains("lizard")
+    ) {
+      win();
+    } else if (
+      pick1.children[0].classList.contains("lizard") &&
+      pick2.children[0].classList.contains("rock")
+    ) {
+      lose();
+    } else if (
+      pick1.children[0].classList.contains("lizard") &&
+      pick2.children[0].classList.contains("paper")
+    ) {
+      win();
+    } else if (
+      pick1.children[0].classList.contains("lizard") &&
+      pick2.children[0].classList.contains("scissors")
+    ) {
+      lose();
+    } else if (
+      pick1.children[0].classList.contains("lizard") &&
+      pick2.children[0].classList.contains("spock")
+    ) {
+      win();
+    } else if (
+      pick1.children[0].classList.contains("lizard") &&
+      pick2.children[0].classList.contains("lizard")
+    ) {
+      draw();
+    } else if (
+      pick1.children[0].classList.contains("spock") &&
+      pick2.children[0].classList.contains("rock")
+    ) {
+      win();
+    } else if (
+      pick1.children[0].classList.contains("spock") &&
+      pick2.children[0].classList.contains("paper")
+    ) {
+      lose();
+    } else if (
+      pick1.children[0].classList.contains("spock") &&
+      pick2.children[0].classList.contains("scissors")
+    ) {
+      win();
+    } else if (
+      pick1.children[0].classList.contains("spock") &&
+      pick2.children[0].classList.contains("lizard")
+    ) {
+      lose();
+    } else if (
+      pick1.children[0].classList.contains("spock") &&
+      pick2.children[0].classList.contains("spock")
+    ) {
+      draw();
     }
     scoreBox.innerHTML = score;
   }, 1000);
 }
-
+function win() {
+  resultText.innerHTML = "YOU WIN";
+  score++;
+  pick1.children[0].style.boxShadow = "0 0 1000px lightblue";
+}
+function lose() {
+  resultText.innerHTML = "YOU LOSE";
+  pick2.children[0].style.boxShadow = "0 0 1000px lightblue";
+}
+function draw() {
+  resultText.innerHTML = "DRAW";
+  resultText.style.boxShadow = "0 0 500px";
+}
 playAgainBtn.onclick = function () {
   cardsContainer.classList.toggle("hidden");
   gameContainer.classList.toggle("hidden");
@@ -143,6 +240,8 @@ playAgainBtn.onclick = function () {
   result.classList.toggle("hidden");
   cardsContainer.innerHTML = `<div class="card rock"></div>
 <div class="card paper"> </div>
-<div class="card scissors"></div>`;
+<div class="card scissors"></div>
+<div class="card lizard">
+</div><div class="card spock"></div>`;
   buttonSelect();
 };
